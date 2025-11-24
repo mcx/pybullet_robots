@@ -6,13 +6,13 @@ import time
 
 import pybullet_data
 
-use_real_hardware = False
+use_real_hardware = True#False
 if use_real_hardware:
   import serial
 
   # Configure the serial connection
   ser = serial.Serial(
-      port='/dev/tty.usbserial-AU05J61K', #/dev/ttyUSB0',"COM8",    # Change this if your device is on a different port
+      port='/dev/ttyUSB0',#"COM8",    # Change this if your device is on a different port
       baudrate=115200,        # Set the baud rate
       bytesize=serial.EIGHTBITS,
       parity=serial.PARITY_NONE,
@@ -38,9 +38,9 @@ allow_self_collision = True
 if allow_self_collision:
 	flags+= p.URDF_USE_SELF_COLLISION
 
-robot = p.loadURDF("surge_v13_hand_right_textured_pybullet.urdf", useMaximalCoordinates=False, useFixedBase=True, flags=flags)
+#robot = p.loadURDF("surge_v13_hand_right_textured_pybullet.urdf", useMaximalCoordinates=False, useFixedBase=True, flags=flags)
 #robot = p.loadURDF("surge_v13_hand_right_pybullet.urdf", useMaximalCoordinates=False, useFixedBase=True, flags=flags)
-#robot = p.loadURDF("surge_v13_hand_left_textured_pybullet.urdf", useMaximalCoordinates=False, useFixedBase=True, flags=flags)
+robot = p.loadURDF("surge_v13_hand_left_textured_pybullet.urdf", useMaximalCoordinates=False, useFixedBase=True, flags=flags)
 #robot = p.loadURDF("surge_v13_hand_left_pybullet.urdf", useMaximalCoordinates=False, useFixedBase=True, flags=flags)
 
 p.configureDebugVisualizer(p.COV_ENABLE_RENDERING, 1)
